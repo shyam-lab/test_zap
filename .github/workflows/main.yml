@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: OWASP ZAP Full Scan
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions ta
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+      - name: fullscan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          # Target URL
+          target: 'https://cloud.sleepdata.org'
